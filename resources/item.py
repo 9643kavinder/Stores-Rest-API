@@ -3,6 +3,7 @@ from flask_jwt import JWT,jwt_required
 from security import authenticate, identity
 from models.item import ItemModel
 import sqlite3
+from models.item import ItemModel
 
 class Item(Resource):
     parser = reqparse.RequestParser()
@@ -49,3 +50,8 @@ class Item(Resource):
             item = ItemModel(name,data['price'],data['store_id'])
         item.save_to_db()
         return {"message" : "Item added successfully"}
+    
+
+class ItemList(Resource):
+    def get(self):
+        return {"items":[item.json() for item in ItemModel.query.all()]}

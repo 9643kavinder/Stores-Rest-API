@@ -5,10 +5,9 @@ from security import authenticate, identity
 from models.users import UserModel
 from models.item import ItemModel
 from models.stores import StoreModel
-from resources.item import Item
+from resources.item import Item, ItemList
 from resources.users import UserRegister
 from resources.stores import Store, StoreList
-from item import ItemList
 from db import db
 from flask_sqlalchemy import SQLAlchemy
 
